@@ -1,4 +1,4 @@
-package com.example.cleanarchitecturesample2
+package com.example.cleanarchitecturesample2.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
