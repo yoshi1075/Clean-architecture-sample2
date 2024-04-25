@@ -4,17 +4,22 @@ import com.example.cleanarchitecturesample2.domain.common.Error
 import com.example.cleanarchitecturesample2.domain.common.Result
 import com.example.cleanarchitecturesample2.domain.todo.model.Task
 import com.example.cleanarchitecturesample2.domain.todo.repository.TaskRepository
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 
 class DefaultTaskRepository(
     private val remoteDataSource: RemoteTaskDataSource,
     private val localDataSource: LocalTaskDataSource,
 ) : TaskRepository {
-    override fun getTasks(): Flow<Result<List<Task>, Error>> {
+    override suspend fun getTasks(): Flow<Result<List<Task>, Error>> {
         TODO("Not yet implemented")
     }
 
-    override fun getTask(): Flow<Result<Task, Error>> {
+    override suspend fun getTask(): Flow<Result<Task, Error>> {
         TODO("Not yet implemented")
     }
 

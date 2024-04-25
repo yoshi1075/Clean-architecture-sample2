@@ -11,7 +11,7 @@ class GetTasksUseCaseImpl(
     private val taskRepository: TaskRepository
 ) : GetTasksUseCase {
 
-    override fun invoke(): Flow<Result<List<Task>, Error>> {
+    override suspend fun invoke(): Flow<Result<List<Task>, Error>> {
         return taskRepository.getTasks()
     }
 }
