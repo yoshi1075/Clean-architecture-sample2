@@ -10,8 +10,8 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 
 interface RemoteTaskDataSource {
-    suspend fun getTasks(): Flow<Result<List<Task>, DataError.NetworkError>>
-    suspend fun getTask(): Flow<Result<Task, DataError.NetworkError>>
+    suspend fun getTasks(): Result<List<Task>, DataError.NetworkError>
+    suspend fun getTask(): Result<Task, DataError.NetworkError>
     suspend fun addTask(task: Task): Result<Nothing, DataError.NetworkError>
     suspend fun updateTask(task: Task): Result<Nothing, DataError.NetworkError>
     suspend fun deleteTask(): Result<Nothing, DataError.NetworkError>

@@ -4,5 +4,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ApiTasks(
-    val todos: List<ApiTasks>
-)
+    val todos: List<ApiTask>
+) {
+    fun toDomain() = todos.map { it.toDomain() }
+}

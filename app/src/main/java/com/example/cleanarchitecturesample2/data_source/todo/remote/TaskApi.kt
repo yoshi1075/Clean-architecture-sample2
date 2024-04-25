@@ -1,9 +1,6 @@
 package com.example.cleanarchitecturesample2.data_source.todo.remote
 
-import com.example.cleanarchitecturesample2.domain.common.DataError
-import com.example.cleanarchitecturesample2.domain.common.Result
 import com.example.cleanarchitecturesample2.domain.todo.model.Task
-import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -18,11 +15,11 @@ interface TaskApi {
     suspend fun getTask(): Response<ApiTask>
 
     @POST("todos/add")
-    suspend fun addTask(task: Task): Response<Nothing>
+    suspend fun addTask(task: Task): Response<ApiTask>
 
     @PUT("todos/{id}")
-    suspend fun updateTask(task: Task): Response<Nothing>
+    suspend fun updateTask(task: Task): Response<ApiTask>
 
     @DELETE("todos/{id}")
-    suspend fun deleteTask(): Response<Nothing>
+    suspend fun deleteTask(): Response<ApiTask>
 }

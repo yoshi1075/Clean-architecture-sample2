@@ -6,5 +6,5 @@ import com.example.cleanarchitecturesample2.domain.todo.model.Task
 import kotlinx.coroutines.flow.Flow
 
 interface GetTasksUseCase {
-    suspend operator fun invoke(): Flow<Result<List<Task>, Error>>
+    suspend operator fun invoke(): Result<List<Task>, Error>
 }

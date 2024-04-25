@@ -15,11 +15,11 @@ class DefaultTaskRepository(
     private val remoteDataSource: RemoteTaskDataSource,
     private val localDataSource: LocalTaskDataSource,
 ) : TaskRepository {
-    override suspend fun getTasks(): Flow<Result<List<Task>, Error>> {
+    override suspend fun getTasks(): Result<List<Task>, Error> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getTask(): Flow<Result<Task, Error>> {
+    override suspend fun getTask(): Result<Task, Error> {
         TODO("Not yet implemented")
     }
 

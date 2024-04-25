@@ -23,11 +23,11 @@ class DefaultRemoteTaskDataSource(
             .build()
             .create(),
 ) : RemoteTaskDataSource {
-    override suspend fun getTasks(): Flow<Result<List<Task>, DataError.NetworkError>> {
+    override suspend fun getTasks(): Result<List<Task>, DataError.NetworkError> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getTask(): Flow<Result<Task, DataError.NetworkError>> {
+    override suspend fun getTask(): Result<Task, DataError.NetworkError> {
         TODO("Not yet implemented")
     }
 
