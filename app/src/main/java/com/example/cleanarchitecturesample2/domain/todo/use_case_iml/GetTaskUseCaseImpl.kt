@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 class GetTaskUseCaseImpl(
     private val taskRepository: TaskRepository
 ) : GetTaskUseCase {
-    override suspend fun invoke(id: Int): Flow<Result<Task, Error>> {
+    override suspend fun invoke(id: Int): Result<Task, Error> {
         return taskRepository.getTask()
     }
 }
