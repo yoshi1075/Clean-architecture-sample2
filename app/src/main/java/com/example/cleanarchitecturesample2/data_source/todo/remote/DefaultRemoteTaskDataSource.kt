@@ -7,6 +7,7 @@ import com.example.cleanarchitecturesample2.domain.todo.model.Task
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.flow.Flow
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
@@ -24,7 +25,25 @@ class DefaultRemoteTaskDataSource(
             .create(),
 ) : RemoteTaskDataSource {
     override suspend fun getTasks(): Result<List<Task>, DataError.NetworkError> {
-        TODO("Not yet implemented")
+        val response = apiClient.getTasks()
+        val data = response.body()
+        return when {
+            response.isSuccessful && data != null -> {
+                Result.Success(data.toDomain())
+            }
+
+            data == null || response.code() == 404 -> {
+                Result.Failure(DataError.NetworkError.REQUEST_ERROR)
+            }
+
+            response.code() == 501 -> {
+                Result.Failure(DataError.NetworkError.SERVER_ERROR)
+            }
+
+            else -> {
+                Result.Failure(DataError.NetworkError.UNKNOWN)
+            }
+        }
     }
 
     override suspend fun getTask(): Result<Task, DataError.NetworkError> {
