@@ -6,6 +6,7 @@ sealed interface DataError : Error {
         NO_INTERNET,
         REQUEST_ERROR,
         SERVER_ERROR,
+        UNKNOWN,
     }
 
     enum class LocalError : DataError {
