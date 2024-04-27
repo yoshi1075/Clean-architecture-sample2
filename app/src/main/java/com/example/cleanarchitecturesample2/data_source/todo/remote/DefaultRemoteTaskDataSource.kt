@@ -46,7 +46,7 @@ class DefaultRemoteTaskDataSource(
         }
     }
 
-    override suspend fun getTask(): Result<Task, DataError.NetworkError> {
+    override suspend fun getTask(todoId: Int): Result<Task, DataError.NetworkError> {
         TODO("Not yet implemented")
     }
 
