@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocalTaskDataSource {
     suspend fun getTasks(): Result<List<Task>, DataError.LocalError>
-    suspend fun getTask(): Result<Task, DataError.LocalError>
+    suspend fun getTask(id: Int): Result<Task, DataError.LocalError>
     suspend fun addTask(task: Task): Result<Nothing, DataError.LocalError>
     suspend fun updateTask(task: Task): Result<Nothing, DataError.LocalError>
     suspend fun deleteTask(): Result<Nothing, DataError.LocalError>
