@@ -1,6 +1,5 @@
 package com.example.cleanarchitecturesample2.data_source.todo.local
 
-import com.example.cleanarchitecturesample2.MyApplication
 import com.example.cleanarchitecturesample2.data.todo.LocalTaskDataSource
 import com.example.cleanarchitecturesample2.domain.common.DataError
 import com.example.cleanarchitecturesample2.domain.common.Result
@@ -8,7 +7,7 @@ import com.example.cleanarchitecturesample2.domain.todo.model.Task
 import java.lang.Exception
 
 class DefaultLocalTaskDataSource(
-    private val dao: TaskDao = TaskDataBase.getInstance(MyApplication().applicationContext).taskDao
+    private val dao: TaskDao
 ) : LocalTaskDataSource {
     override suspend fun getTasks(): Result<List<Task>, DataError.LocalError> {
         return try {
