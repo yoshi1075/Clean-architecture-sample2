@@ -6,13 +6,14 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface TaskApi {
     @GET("todos")
     suspend fun getTasks(): Response<ApiTasks>
 
     @GET("todos/{id}")
-    suspend fun getTask(): Response<ApiTask>
+    suspend fun getTask(@Path("id") todoId: Int): Response<ApiTask>
 
     @POST("todos/add")
     suspend fun addTask(task: Task): Response<ApiTask>
