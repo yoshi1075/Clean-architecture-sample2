@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
@@ -56,35 +57,37 @@ class MainActivity : ComponentActivity() {
                 viewModel.clearErrorMessage()
             }
 
-            Column(
+            LazyColumn(
                 Modifier
                     .fillMaxSize()
                     .padding(horizontal = 20.dp)
             ) {
-                Button(
-                    onClick = {
-                        viewModel.onClick()
-                    },
-                    modifier = Modifier.padding(10.dp)
-                ) {
-                    Text(
-                        text = "fetch",
-                        fontSize = 24.sp,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(50.dp)
-                            .wrapContentHeight(align = Alignment.CenterVertically),
-                    )
-                }
-                Divider(thickness = 4.dp, color = Color.Black)
-                Spacer(modifier = Modifier.height(12.dp))
-                tasks.value.forEach {
-                    Text(
-                        text = it.title,
-                        fontSize = 16.sp,
-                    )
-                    Divider(modifier = Modifier.padding(4.dp))
+                item {
+                    Button(
+                        onClick = {
+                            viewModel.onClick()
+                        },
+                        modifier = Modifier.padding(10.dp)
+                    ) {
+                        Text(
+                            text = "fetch",
+                            fontSize = 24.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(50.dp)
+                                .wrapContentHeight(align = Alignment.CenterVertically),
+                        )
+                    }
+                    Divider(thickness = 4.dp, color = Color.Black)
+                    Spacer(modifier = Modifier.height(12.dp))
+                    tasks.value.forEach {
+                        Text(
+                            text = it.title,
+                            fontSize = 16.sp,
+                        )
+                        Divider(modifier = Modifier.padding(4.dp))
+                    }
                 }
             }
         }
